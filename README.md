@@ -234,6 +234,8 @@ JMeter可以直接从jar包启动，这里我们以单元测试的方式来做�
 
 覆盖率可以用Idea的Run 'All Tests' With Coverage，跑完后会生成coverage报告，并且Project视图里每一个包/文件都会展示覆盖率。
 
+也可以使用maven插件jacoco。
+
 ### 行覆盖与分支覆盖的区别
 
 这两个是一样的吗？看以下sample
