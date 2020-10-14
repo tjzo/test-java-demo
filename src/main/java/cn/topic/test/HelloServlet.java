@@ -21,8 +21,11 @@ public class HelloServlet extends HttpServlet {
         String a = request.getParameter("a");
         String b = request.getParameter("b");
         long sum = helloService.add(a, b);
-        PrintWriter out = response.getWriter();
-        response.setContentType("application/json");
-        out.println(sum);
+        try (PrintWriter out = response.getWriter()) {
+            response.setContentType("application/json");
+            out.println(sum);
+        } catch (IOException e) {
+            // Ignore, sonar let me do this Q_Q
+        }
     }
 }

@@ -9,6 +9,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <properties>
+        <sonar.login>675f0a3c3ab6a45fa20713b4e9cb4345e7f13bff</sonar.login>
+        <sonar.host.url>https://sonarqube.woda.com</sonar.host.url>
+        <sonar.projectKey>test-demo</sonar.projectKey>
+        <sonar.projectName>test-demo</sonar.projectName>
+        <sonar.log.level>DEBUG</sonar.log.level>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -84,6 +92,11 @@
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.3.0.603</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

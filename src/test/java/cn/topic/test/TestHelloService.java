@@ -27,32 +27,38 @@ import static org.junit.Assert.fail;
 public class TestHelloService {
 
     public static HelloService helloService;
+
     @Rule
     public MethodRule timeOut = new Timeout(1000);
 
     @BeforeClass
     public static void init() {
         // 初始化一些变量等
+        System.out.println("Before Class");
         helloService = new HelloService();
     }
 
     @AfterClass
     public static void tearUp() {
         // 所有测试完做的清理
+        System.out.println("After Class");
     }
 
     @Before
     public void prepare() {
         // 每次测试前做的初始化
+        System.out.println("Before");
     }
 
     @After
     public void clear() {
         // 每次测试完做的清理
+        System.out.println("After");
     }
 
     @Test
     public void testNullToZero() throws Exception {
+        System.out.println("Test Null To Zero");
         assertEquals(0, helloService.nullToZero(null));
         assertEquals(2, helloService.nullToZero("2"));
         try {
@@ -65,17 +71,20 @@ public class TestHelloService {
 
     @Test
     public void testAdd() throws Exception {
+        System.out.println("Test Add");
         assertTrue(helloService.add(1, 2) == 3);
         assertFalse(helloService.add("2", "3") == 3);
     }
 
     @Test
     public void testSplit() throws Exception {
+        System.out.println("Test Split");
         assertArrayEquals(new String[]{"a", "bc", "def"}, helloService.split("a2bc37def", "\\d+"));
     }
 
     @Test
     public void testClone() throws Exception {
+        System.out.println("Test Clone");
         TestObject obj = new TestObject("小明", 12);
         assertEquals(obj, helloService.clone(obj));
         assertNotSame(obj, helloService.clone(obj));
@@ -83,6 +92,7 @@ public class TestHelloService {
 
     @Test
     public void testGetFromMap() throws Exception {
+        System.out.println("Test Get From Map");
         Map<String, Long> map = new HashMap<>();
         map.put("a", 1L);
         assertNotNull(helloService.getFromMap(map, "a"));
@@ -92,6 +102,7 @@ public class TestHelloService {
 
     @Test
     public void testSleep() throws Exception {
+        System.out.println("Test Sleep");
         helloService.sleep(500L);
     }
 
